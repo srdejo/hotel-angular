@@ -58,4 +58,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
+    { path: 'habitacion',
+    children: [{
+      loadChildren: () => import('./../../habitacion/habitacion.module').then(m => m.HabitacionModule)
+    }]
+    }
 ];
