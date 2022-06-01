@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
-import { DashboardComponent } from '../../dashboard/dashboard.component';
+import { DashboardComponent } from '../../feature/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../feature/user-profile/user-profile.component';
 import { TableListComponent } from '../../feature/table-list/table-list.component';
 import { TypographyComponent } from '../../feature/typography/typography.component';
