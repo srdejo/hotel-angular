@@ -4,9 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
-import { ComponentsModule } from './components/components.module';
+import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ComponentsModule,
+    CoreModule,
+    SharedModule,
     RouterModule,
     AppRoutingModule,
   ],
