@@ -161,6 +161,15 @@
         }
     }
 
+    .card-header-lime .card-icon,
+    .card-header-lime .card-text,
+    .card-header-lime:not(.card-header-icon):not(.card-header-text),
+    &.bg-lime,
+    &.card-rotate.bg-lime .front,
+    &.card-rotate.bg-lime .back{
+      background: linear-gradient(60deg, $lime-900, $lime-600);
+    }
+
     .card-header-primary .card-icon,
     .card-header-primary .card-text,
     .card-header-primary:not(.card-header-icon):not(.card-header-text),
@@ -211,6 +220,14 @@
       background: linear-gradient(60deg, $pink-400, $pink-600);
     }
 
+    .card-header-lime .card-icon,
+    .card-header-lime:not(.card-header-icon):not(.card-header-text),
+    .card-header-lime .card-text{
+        @include shadow-big-color($lime-200);
+
+        //@include shadow-8dp-color($brand-primary);
+        //@include shadow-16dp-color($brand-primary);
+    }
     .card-header-primary .card-icon,
     .card-header-primary:not(.card-header-icon):not(.card-header-text),
     .card-header-primary .card-text{

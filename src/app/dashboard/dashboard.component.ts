@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import * as Chartist from 'chartist';
 
 @Component({
@@ -8,7 +9,13 @@ import * as Chartist from 'chartist';
 })
 export class DashboardComponent implements OnInit {
 
+  color: ThemePalette = 'accent';
+  checked = false;
+  disabled = false;
+  
+  
   constructor() { }
+
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
