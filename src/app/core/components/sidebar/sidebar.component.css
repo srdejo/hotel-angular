@@ -2,7 +2,7 @@
     background-color: black;
 }
 
-.text-white{
-    color: #d1b14d;
+.text-logo{
+    color: #d1b14d !important;
     margin-top: 0.5rem;
 }

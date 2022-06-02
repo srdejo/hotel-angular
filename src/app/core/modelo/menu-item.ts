@@ -1,4 +1,6 @@
 export class MenuItem {
-    url: string;
-    nombre: string;
+    path: string;
+    title: string;
+    icon: string;
+    class: string;
 }

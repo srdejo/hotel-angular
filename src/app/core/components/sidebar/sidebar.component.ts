@@ -1,18 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'app/core/modelo/menu-item';
 
 declare const $: any;
-declare interface RouteInfo {
-    path: string;
-    title: string;
-    icon: string;
-    class: string;
-}
-export const ROUTES: RouteInfo[] = [
+
+export const ROUTES: MenuItem[] = [
     { path: '/dashboard', title: 'Inicio',  icon: 'dashboard', class: '' },
-    { path: '/user-profile', title: 'Habitaciones',  icon:'king_bed', class: '' },
-    { path: '/table-list', title: 'Huesped',  icon:'person', class: '' },
-    { path: '/typography', title: 'Productos',  icon:'liquor', class: '' },
-    { path: '/icons', title: 'Facturar',  icon:'receipt_long', class: '' },
+    { path: 'habitacion', title: 'Habitaciones',  icon:'king_bed', class: '' },
+    { path: 'huesped', title: 'Huesped',  icon:'person', class: '' },
+    { path: 'producto', title: 'Productos',  icon:'liquor', class: '' },
+    { path: 'factura', title: 'Facturar',  icon:'receipt_long', class: '' },
 ];
 
 @Component({
