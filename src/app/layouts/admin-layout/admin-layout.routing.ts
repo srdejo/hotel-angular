@@ -1,11 +1,10 @@
 import { Routes } from '@angular/router';
 
-import { DashboardComponent } from '../../feature/dashboard/dashboard.component';
+import { DashboardComponent } from '../../feature/home/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../feature/user-profile/user-profile.component';
 import { TableListComponent } from '../../feature/table-list/table-list.component';
 import { TypographyComponent } from '../../feature/typography/typography.component';
 import { IconsComponent } from '../../feature/icons/icons.component';
-import { MapsComponent } from '../../feature/maps/maps.component';
 import { NotificationsComponent } from '../../feature/notifications/notifications.component';
 
 export const AdminLayoutRoutes: Routes = [
@@ -56,6 +55,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'table-list',     component: TableListComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
 ];

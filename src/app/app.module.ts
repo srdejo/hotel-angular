@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { SharedModule } from './shared/shared.module';
+import { LoginComponent } from './feature/login/login.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-
+    LoginComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

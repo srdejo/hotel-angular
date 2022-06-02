@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { Location, LocationStrategy, PathLocationStrategy, PopStateEvent } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Location, PopStateEvent } from '@angular/common';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import PerfectScrollbar from 'perfect-scrollbar';
 import * as $ from "jquery";
@@ -11,7 +11,7 @@ import { filter, Subscription } from 'rxjs';
   styleUrls: ['./admin-layout.component.scss']
 })
 export class AdminLayoutComponent implements OnInit {
-  private _router: Subscription;
+  protected _router: Subscription;
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
 
@@ -45,13 +45,13 @@ export class AdminLayoutComponent implements OnInit {
                  window.scrollTo(0, 0);
          }
       });
-      this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
+      this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
            elemMainPanel.scrollTop = 0;
            elemSidebar.scrollTop = 0;
       });
       if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac()) {
-          let ps = new PerfectScrollbar(elemMainPanel);
-          ps = new PerfectScrollbar(elemSidebar);
+          // let ps = new PerfectScrollbar(elemMainPanel);
+          // ps = new PerfectScrollbar(elemSidebar);
       }
 
       const window_width = $(window).width();
@@ -80,7 +80,7 @@ export class AdminLayoutComponent implements OnInit {
       });
 
       $('.fixed-plugin .badge').click(function(){
-          let $full_page_background = $('.full-page-background');
+          //let $full_page_background = $('.full-page-background');
 
 
           $(this).siblings().removeClass('active');
