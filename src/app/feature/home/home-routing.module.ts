@@ -12,7 +12,11 @@ const routes: Routes = [{
       component: DashboardComponent
     }
   ]
-}];
+},{
+  path: '**',
+  redirectTo: ''
+}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

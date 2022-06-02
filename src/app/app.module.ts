@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './feature/login/login.component';
 
@@ -23,7 +22,6 @@ import { LoginComponent } from './feature/login/login.component';
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
     LoginComponent,
   ],
   providers: [],

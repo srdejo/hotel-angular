@@ -14,16 +14,11 @@ const routes: Routes =[
   {
     path: 'dashboard',
     loadChildren: () => import('./feature/home/home.module').then(mod => mod.HomeModule)
-  }
-  
-  /*, {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [{
-      path: '',
-      loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-    }]
-  }*/
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }  
 ];
 
 @NgModule({
