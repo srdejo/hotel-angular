@@ -17,13 +17,15 @@ export const ROUTES: MenuItem[] = [
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  menuItems: any[];
+
+  menuItems: MenuItem[];
 
   constructor() { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
-  }
+  };
+
   isMobileMenu() {
       if ($(window).width() > 991) {
           return false;
