@@ -1,29 +1,13 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-6">
+                <app-form-habitacion></app-form-habitacion>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
-                <mat-stepper orientation="horizontal">
-                    <mat-step>
-                        <ng-template matStepLabel>Caracteristicas de la habitación</ng-template>
-                        <ng-template matStepContent>
-                            <app-form-habitacion></app-form-habitacion>
-                            <button mat-button matStepperNext>Siguiente</button>
-                        </ng-template>
-                    </mat-step>
-                    <mat-step>
-                        <ng-template matStepLabel>Datos del huesped</ng-template>
-                        <ng-template matStepContent>
-                            <app-form-huesped></app-form-huesped>
-                            <button mat-button matStepperPrevious>Volver</button>
-                            <button mat-button matStepperNext>Siguiente</button>
-                        </ng-template>
-                    </mat-step>
-                    <mat-step>
-                        <ng-template matStepLabel>Resumen de pago</ng-template>
-                        <p>This content was rendered eagerly</p>
-                        <button mat-button matStepperPrevious>Volver</button>
-                    </mat-step>
-                </mat-stepper>
+                <app-form-huesped></app-form-huesped>
             </div>
         </div>
     </div>

@@ -12,10 +12,6 @@ const routes: Routes = [{
       component: InicioComponent
     },
     {
-      path: 'habitacion',
-      loadChildren: () => import('../habitacion/habitacion.module').then(mod => mod.HabitacionModule)
-    },
-    {
       path: 'huesped',
       loadChildren: () => import('../huesped/huesped.module').then(mod => mod.HuespedModule)
     },

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTES } from 'app/core/constants/menu-items';
+import { Menu } from 'app/core/constants/menu-items';
 import { MenuItem } from 'app/core/modelo/menu-item';
 
 declare const $: any;
@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    this.menuItems = Menu.ITEMS.filter(menuItem => menuItem);
   };
 
   isMobileMenu() {

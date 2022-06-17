@@ -10,5 +10,6 @@ export interface Habitacion {
     cama160m?: number,
     cama180m?: number,
     yacuzzi?:boolean,
+    ocupada?:boolean,
     precios: HabitacionPrecio[]
 }

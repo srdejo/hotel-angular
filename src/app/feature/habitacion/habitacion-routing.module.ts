@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 import { IngresarHuespedComponent } from './ingresar-huesped/ingresar-huesped.component';
 
 const routes: Routes = [{
-  path: 'ingresar-huesped',
-  component: IngresarHuespedComponent
+  path: '',
+  component: DashboardComponent,
+  children: [{
+    path: 'ingresar-huesped/:habitacion',
+    component: IngresarHuespedComponent
+  }]
 }];
 
 @NgModule({

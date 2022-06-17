@@ -1,56 +1,58 @@
 <div class="row justify-content-md-center">
+    <div class="col-md-12">
+        <h3>Ingresar huesped en la habitacion {{numeroHabitacion}}</h3>
+    </div>
+</div>
+<div class="row justify-content-md-center">
     <div class="col-md-4">
-        <mat-form-field appearance="fill">
-            <mat-label>Número de habitación</mat-label>
-            <mat-select>
-                <mat-option value="101">101</mat-option>
-                <mat-option value="201">201</mat-option>
-                <mat-option value="202">202</mat-option>
-            </mat-select>
-            
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Adultos</mat-label>
+            <input matInput type="number">
+        </mat-form-field>
+    </div>
+    <div class="col-md-4">
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Niños mayores a 5 años</mat-label>
+            <input matInput type="number">
+        </mat-form-field>
+    </div>
+    <div class="col-md-4">
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Dias de hospedaje</mat-label>
+            <input matInput type="number">
         </mat-form-field>
     </div>
 </div>
 <div class="row justify-content-md-center">
-    <div class="col-md-4">
-        <p>Capacidad ## personas</p>
-    </div>
-</div>
-<div class="row justify-content-md-center">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <mat-slide-toggle color="primary">Aire acondicionado</mat-slide-toggle>
     </div>
+    <div class="col-md-6 text-right">
+        <mat-slide-toggle color="primary">Uso por horas</mat-slide-toggle>
+    </div>
 </div>
 <div class="row justify-content-md-center">
-    <div class="col-md-4">
-        <mat-form-field class="example-form-field" appearance="fill">
-            <mat-label>Colchonetas adicionales</mat-label>
-            <input matInput type="text">
-            <button matSuffix mat-icon-button aria-label="Clear">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-form-field>
+    <div class="col-md-12">
+        <h4>Adicionales</h4>
     </div>
 </div>
 <div class="row justify-content-md-center">
     <div class="col-md-4">
         <mat-form-field class="example-form-field" appearance="fill">
-            <mat-label>Toallas adicionales</mat-label>
-            <input matInput type="text">
-            <button matSuffix mat-icon-button aria-label="Clear">
-                <mat-icon>close</mat-icon>
-            </button>
+            <mat-label>Colchonetas</mat-label>
+            <input matInput type="number">
         </mat-form-field>
     </div>
-</div>
-<div class="row justify-content-md-center">
     <div class="col-md-4">
         <mat-form-field class="example-form-field" appearance="fill">
-            <mat-label>Cobijas adicionales</mat-label>
+            <mat-label>Toallas</mat-label>
+            <input matInput type="number">
+        </mat-form-field>
+    </div>
+    <div class="col-md-4">
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Cobijas</mat-label>
             <input matInput type="text">
-            <button matSuffix mat-icon-button aria-label="Clear">
-                <mat-icon>close</mat-icon>
-            </button>
         </mat-form-field>
     </div>
 </div>

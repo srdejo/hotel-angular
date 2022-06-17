@@ -6,5 +6,6 @@ export interface HabitacionPrecio {
     esNinio?: boolean,
     horas?: boolean,
     yacuzzi?: boolean,
+    precioPorPersona?: boolean,
     precio: number
 }

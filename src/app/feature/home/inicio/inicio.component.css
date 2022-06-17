@@ -2,3 +2,22 @@ mat-slide-toggle {
     margin: 8px 0;
     display: block;
   }
+
+.mat-badge-content {
+    background: rgb(105, 105, 105);
+    color: rgb(255, 255, 255);
+}
+
+.aire{
+  color: rgb(74, 165, 207);
+}
+
+.width40porc{
+  width: 40%;
+}
+
+ul{
+  list-style-type: square;
+  margin: 0;
+  padding-left: 15px;
+}

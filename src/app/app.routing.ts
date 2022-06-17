@@ -16,6 +16,10 @@ const routes: Routes =[
     loadChildren: () => import('./feature/home/home.module').then(mod => mod.HomeModule)
   },
   {
+    path: 'habitacion',
+    loadChildren: () => import('./feature/habitacion/habitacion.module').then(mod => mod.HabitacionModule)
+  },
+  {
     path: '**',
     redirectTo: ''
   }  
