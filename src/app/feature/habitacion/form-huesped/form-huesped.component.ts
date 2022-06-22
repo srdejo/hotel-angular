@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Huesped } from 'app/core/modelo/huesped';
 import { FormControl, FormGroup, Validators, FormGroupDirective, NgForm } from '@angular/forms'
 import { MatTable } from '@angular/material/table';
@@ -19,6 +19,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./form-huesped.component.scss']
 })
 export class FormHuespedComponent implements OnInit {
+
+  @Output() huespeds = new EventEmitter<Huesped[]>();
 
   @ViewChild(MatTable) table: MatTable<Huesped>;
 
@@ -48,6 +50,7 @@ export class FormHuespedComponent implements OnInit {
       this.table.renderRows();
       formDirective.resetForm();
       this.form.reset();
+      this.huespeds.emit(this.dataSource);
     }
   }
 
@@ -64,5 +67,9 @@ export class FormHuespedComponent implements OnInit {
         this.dataSource.splice(index, 1);
     });
     this.table.renderRows();
+  }
+
+  leerHuspedes(){
+    return this.dataSource;
   }
 }
