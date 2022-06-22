@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Huesped } from 'app/core/modelo/huesped';
 import { FormControl, FormGroup, Validators, FormGroupDirective, NgForm } from '@angular/forms'
 import { MatTable } from '@angular/material/table';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { ErrorStateMatcher } from '@angular/material/core';
+
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -19,7 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class FormHuespedComponent implements OnInit {
 
-  @ViewChild(MatTable) table: MatTable<Huesped>; 
+  @ViewChild(MatTable) table: MatTable<Huesped>;
 
   form = new FormGroup({
     docType: new FormControl('', Validators.required),
@@ -27,6 +28,10 @@ export class FormHuespedComponent implements OnInit {
     name: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
     email: new FormControl('', Validators.email),
+    fecha_nacimiento: new FormControl(null, Validators.required),
+    profesion: new FormControl(),
+    prosedencia: new FormControl(),
+    direccion: new FormControl(),
   });
   matcher = new MyErrorStateMatcher();
 
@@ -37,22 +42,20 @@ export class FormHuespedComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  add() {
+  add(formDirective: FormGroupDirective) {
     if (this.form.valid) {
       this.dataSource.push(this.form.value);
       this.table.renderRows();
-      this.resetForm();
-    } 
+      formDirective.resetForm();
+      this.form.reset();
+    }
   }
 
   resetForm() {
     this.form.reset();
-    this.form.controls.docType.setErrors(null);
-    this.form.controls.docNumber.setErrors(null);
-    this.form.controls.name.setErrors(null);
-    this.form.controls.phone.setErrors(null);
-    this.form.controls.email.setErrors(null);
-    this.form.updateValueAndValidity();
+    Object.keys(this.form.controls).forEach(key => {
+      this.form.controls[key].reset();
+    });
   }
 
   remove(huesped: Huesped) {
