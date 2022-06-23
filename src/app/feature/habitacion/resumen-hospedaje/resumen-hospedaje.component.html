@@ -1,12 +1,16 @@
 <br>
-<mat-card class="example-card">
+<mat-card class="example-card" *ngIf="hospedaje">
     <mat-card-title>Resumen de hospedaje</mat-card-title>
-    <mat-card-subtitle>{{hospedaje.adultos}} adultos y ## niños, ## toallas, ## colchonetas adicionales</mat-card-subtitle>
+    <mat-card-subtitle >{{hospedaje.adultos}} adultos y 
+        {{hospedaje.ninios}} niños,
+        {{hospedaje.toallas}} toallas, 
+        {{hospedaje.colchonetas}} colchonetas adicionales</mat-card-subtitle>
     <mat-card-content>
-        <p>Valor día: <strong>##</strong><br>Días de hospedaje: <strong>##</strong>
-            , fecha de salida: <strong>dd-mm-aaaa hh:mm</strong> <br>
+        <p>Valor día: <strong>{{valorDia() |currency:'COP':'symbol-narrow':'0.0-0'}}</strong>
+            <br>Días de hospedaje: <strong>{{hospedaje.dias}}</strong>
+            , fecha de salida: <strong>{{hospedaje.fecha_salida}}</strong> <br>
             <small> Luego de xx horas se cobrara adicional</small></p>
-        <p class="text-align-right">Total: <strong></strong></p>
+        <p class="text-align-right">Total: <strong>{{valorTotal() |currency:'COP':'symbol-narrow':'0.0-0'}}</strong></p>
     </mat-card-content>
     <mat-card-actions class="clearfix">
         <button mat-stroked-button class="float-left"  routerLink="/dashboard">Cancelar</button>

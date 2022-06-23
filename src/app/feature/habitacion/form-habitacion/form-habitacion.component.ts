@@ -1,8 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Habitaciones } from 'app/core/constants/habitaciones';
 import { Habitacion } from 'app/core/modelo/habitacion';
 
 @Component({
@@ -12,30 +10,29 @@ import { Habitacion } from 'app/core/modelo/habitacion';
 })
 export class FormHabitacionComponent implements OnInit {
 
-  numeroHabitacion: string = '';
+  @Input() numeroHabitacion: string = '';
 
   @Output() habitacion = new EventEmitter<Habitacion>();
 
+  habitacionSeleccionada: Habitacion = null;
+  habilitarAire: boolean = true;
+
   habitacionForm = new FormGroup({
-    adultos: new FormControl(''),
-    ninios: new FormControl(''),
-    dias: new FormControl(''),
-    aire: new FormControl(''),
-    porHoras: new FormControl(''),
-    colchonetas: new FormControl(''),
-    toallas: new FormControl(''),
-    cobijas: new FormControl(''),
+    adultos: new FormControl(0),
+    ninios: new FormControl(0),
+    dias: new FormControl(0),
+    aire: new FormControl(this.habilitarAire),
+    porHoras: new FormControl(false),
+    colchonetas: new FormControl(0),
+    toallas: new FormControl(0),
+    cobijas: new FormControl(0),
   });
 
-  constructor(private route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.cargarHabitacion().subscribe();
+    this.validarAire();
     this.cambiosForm();
-  }
-
-  cargarHabitacion(): Observable<string> {
-    return this.route.params.pipe(map(p => this.numeroHabitacion = p.habitacion));
   }
 
   leerHospedaje() {
@@ -46,5 +43,12 @@ export class FormHabitacionComponent implements OnInit {
     this.habitacionForm.valueChanges.subscribe(() => {
       this.habitacion.emit(this.habitacionForm.value);
     })
+  }
+
+  validarAire(){
+    this.habitacionSeleccionada = 
+    Habitaciones.ITEMS.find(habitacion => habitacion.numero == this.numeroHabitacion);
+    this.habilitarAire = this.habitacionSeleccionada.aire;
+    
   }
 }
