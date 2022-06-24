@@ -22,7 +22,7 @@ export class FormHabitacionComponent implements OnInit {
     ninios: new FormControl(0),
     dias: new FormControl(0),
     aire: new FormControl(this.habilitarAire),
-    porHoras: new FormControl(false),
+    horas: new FormControl(),
     colchonetas: new FormControl(0),
     toallas: new FormControl(0),
     cobijas: new FormControl(0),

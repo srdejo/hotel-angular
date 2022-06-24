@@ -3,12 +3,10 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoginComponent } from './feature/login/login.component';
-
 const routes: Routes =[
   {
     path: '',
-    component: LoginComponent,
+    loadChildren: () => import('./feature/login/login.module').then(mod => mod.LoginModule),
     pathMatch: 'full',
   },
   {

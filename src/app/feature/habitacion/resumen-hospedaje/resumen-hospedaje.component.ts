@@ -19,17 +19,25 @@ export class ResumenHospedajeComponent implements OnInit {
   valorDia(): number {
     if (this.hospedaje) {
       let habitacionPrecios: HabitacionPrecio[] = this.hospedaje.habitacion.precios;
+      let numeroPersonas: number = (this.hospedaje.adultos + this.hospedaje.ninios)
 
       let habitacionPrecio: HabitacionPrecio[] = habitacionPrecios
         .filter(precios =>
-          precios.cantidadPersonas == (this.hospedaje.adultos + this.hospedaje.ninios)
+          precios.cantidadPersonas == numeroPersonas
           && precios.aire == this.hospedaje.aire
           && !precios.esAdicional
         )
       console.log(habitacionPrecio);
 
-      if (habitacionPrecio.length == 0)
-        return 0
+      if (habitacionPrecio.length == 0 && numeroPersonas > 0) {
+
+        let mayorCantidadPersonas = habitacionPrecios.reduce((prev, current) =>
+          (prev.cantidadPersonas > current.cantidadPersonas) ? prev : current
+        )
+
+        console.log(mayorCantidadPersonas);
+        
+      }
 
       if (habitacionPrecio[0].precioPorPersona)
         return habitacionPrecio[0].precio * (this.hospedaje.adultos + this.hospedaje.ninios);

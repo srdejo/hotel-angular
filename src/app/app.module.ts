@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app.routing';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { LoginComponent } from './feature/login/login.component';
 
 @NgModule({
   imports: [
@@ -22,7 +21,6 @@ import { LoginComponent } from './feature/login/login.component';
   ],
   declarations: [
     AppComponent,
-    LoginComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

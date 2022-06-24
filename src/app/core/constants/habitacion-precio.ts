@@ -82,6 +82,8 @@ export abstract class Precios {
 
     static readonly PRECIO502: HabitacionPrecio[] = [
         { habitacion: '502', cantidadPersonas: 5, precioPorPersona:true, aire: false, esAdicional: false, esNinio: false, precio: 30000 },
+        { habitacion: '502', cantidadPersonas: 3, precioPorPersona:true, aire: false, esAdicional: false, esNinio: false, precio: 30000 },
+        { habitacion: '502', cantidadPersonas: 4, precioPorPersona:true, aire: false, esAdicional: false, esNinio: false, precio: 30000 },
         { habitacion: '502', cantidadPersonas: 1, aire: false, esAdicional: true, esNinio: true, precio: 20000 },
         { habitacion: '502', cantidadPersonas: 1, aire: false, esAdicional: false, esNinio: false, precio: 50000 },
         { habitacion: '502', cantidadPersonas: 2, aire: false, esAdicional: false, esNinio: false, precio: 70000 },
@@ -130,6 +132,8 @@ export abstract class Precios {
 
     static readonly PRECIO702: HabitacionPrecio[] = [
         { habitacion: '702', cantidadPersonas: 5, precioPorPersona:true, aire: false, esAdicional: false, esNinio: false, precio: 30000 },
+        { habitacion: '702', cantidadPersonas: 3, precioPorPersona:true, aire: false, esAdicional: false, esNinio: false, precio: 30000 },
+        { habitacion: '702', cantidadPersonas: 4, precioPorPersona:true, aire: false, esAdicional: false, esNinio: false, precio: 30000 },
         { habitacion: '702', cantidadPersonas: 1, aire: false, esAdicional: true, esNinio: true, precio: 20000 },
         { habitacion: '702', cantidadPersonas: 1, aire: false, esAdicional: false, esNinio: false, precio: 50000 },
         { habitacion: '702', cantidadPersonas: 2, aire: false, esAdicional: false, esNinio: false, precio: 70000 },
@@ -156,7 +160,7 @@ export abstract class Precios {
     ];
 
     static readonly PRECIOPH: HabitacionPrecio[] = [
-        { habitacion: 'PH', cantidadPersonas: 1, aire: false, yacuzzi: true, horas: true, esAdicional: false, esNinio: false, precio: 30000 },
+        { habitacion: 'PH', cantidadPersonas: 1, precioPorPersona:true, aire: false, yacuzzi: true, horas: true, esAdicional: false, esNinio: false, precio: 30000 },
     ];
 
     static readonly PRECIOPH801: HabitacionPrecio[] = [
