@@ -1,17 +1,21 @@
 <div class="main-content">
     <div class="container-fluid">
+
         <div class="row">
             <div class="col-lg-6">
-                <app-form-habitacion [numeroHabitacion]="numeroHabitacion" (habitacion)="cargarHospedaje($event)"></app-form-habitacion>
+                <app-form-habitacion [numeroHabitacion]="numeroHabitacion" (habitacion)="cargarHospedaje($event)">
+                </app-form-habitacion>
             </div>
             <div class="col-lg-6">
                 <app-resumen-hospedaje [hospedaje]="hospedaje"></app-resumen-hospedaje>
             </div>
         </div>
+
         <div class="row">
             <div class="col-lg-12">
-                <app-form-huesped  (huespeds)="cargarHuesped($event)"></app-form-huesped>
+                <app-form-huesped (huespeds)="cargarHuesped($event)"></app-form-huesped>
             </div>
         </div>
+
     </div>
 </div>

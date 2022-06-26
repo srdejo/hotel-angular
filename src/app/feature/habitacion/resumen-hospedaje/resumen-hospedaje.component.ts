@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HabitacionPrecio } from 'app/core/modelo/habitacion-precio';
 import { Hospedaje } from 'app/core/modelo/hospedaje';
+import { environment } from 'environments/environment';
+import { HabitacionPrecioService } from '../shared/habitacion-precio.service';
 
 @Component({
   selector: 'app-resumen-hospedaje',
@@ -9,45 +11,57 @@ import { Hospedaje } from 'app/core/modelo/hospedaje';
 })
 export class ResumenHospedajeComponent implements OnInit {
 
-  @Input() hospedaje: Hospedaje = null;
+  private _hospedaje = null;
 
-  constructor() { }
+  @Input('hospedaje')
+  set hospedaje(hospedaje: Hospedaje){
+    this._hospedaje = hospedaje;
+    this.consultarValor()
+  };
+
+  serverUrl = environment.apiUrl;
+
+  precioDia: number = 0;
+
+  constructor(private habitacionPrecioService: HabitacionPrecioService) { }
 
   ngOnInit(): void {
+
   }
 
   valorDia(): number {
     if (this.hospedaje) {
-      let habitacionPrecios: HabitacionPrecio[] = this.hospedaje.habitacion.precios;
-      let numeroPersonas: number = (this.hospedaje.adultos + this.hospedaje.ninios)
-
-      let habitacionPrecio: HabitacionPrecio[] = habitacionPrecios
-        .filter(precios =>
-          precios.cantidadPersonas == numeroPersonas
-          && precios.aire == this.hospedaje.aire
-          && !precios.esAdicional
-        )
-      console.log(habitacionPrecio);
-
-      if (habitacionPrecio.length == 0 && numeroPersonas > 0) {
-
-        let mayorCantidadPersonas = habitacionPrecios.reduce((prev, current) =>
-          (prev.cantidadPersonas > current.cantidadPersonas) ? prev : current
-        )
-
-        console.log(mayorCantidadPersonas);
-        
-      }
-
-      if (habitacionPrecio[0].precioPorPersona)
-        return habitacionPrecio[0].precio * (this.hospedaje.adultos + this.hospedaje.ninios);
-
-      return habitacionPrecio[0].precio;
+      let precio: number = 0;
+      return precio
     }
   }
 
   valorTotal(): number {
     if (this.hospedaje.dias > 0)
-      return this.valorDia() * this.hospedaje.dias;
+      return 0 // this.valorDia * this.hospedaje.dias;
+  }
+
+  consultarValor():void {
+    let body: HabitacionPrecio = {
+      habitacion: this._hospedaje.habitacion.numero,
+      aire: this._hospedaje.aire,
+      adultos: this._hospedaje.adultos,
+      ninios: this._hospedaje.ninios
+    }
+
+    this.habitacionPrecioService.consultarValor(body)
+      .subscribe({
+        next: (data) => {
+          this.precioDia =  data.valor         
+        },
+        error: (err) => {
+          console.error(err.error.message, 'Fail')
+          this.precioDia = 0;
+        }
+      })
+  }
+  
+  get hospedaje(){
+    return this._hospedaje;
   }
 }

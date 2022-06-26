@@ -12,8 +12,8 @@ import { map, Observable } from 'rxjs';
 })
 export class IngresarHuespedComponent implements OnInit {
 
-  hospedaje: Hospedaje;
-  numeroHabitacion: string;
+  hospedaje: Hospedaje = null;
+  numeroHabitacion: string = '';
 
   constructor(private route: ActivatedRoute) {
   }

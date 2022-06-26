@@ -26,6 +26,7 @@ export class FormHabitacionComponent implements OnInit {
     colchonetas: new FormControl(0),
     toallas: new FormControl(0),
     cobijas: new FormControl(0),
+    porHoras: new FormControl()
   });
 
   constructor() { }

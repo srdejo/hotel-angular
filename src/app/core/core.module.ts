@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -12,6 +12,11 @@ import { TokenService } from './services/token.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { SecurityGuard } from './guard/security.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './interceptor/token-interceptor';
+import { AuthInterceptor } from './interceptor/auth-interceptor';
+import { ManejadorError } from './interceptor/manejador-error';
 
 @NgModule({
   imports: [
@@ -32,6 +37,13 @@ import { MatButtonModule } from '@angular/material/button';
     NavbarComponent,
     SidebarComponent
   ],
-  providers: [HttpService, SnackbardService, TokenService]
+  providers: [
+    HttpService, 
+    SnackbardService, 
+    TokenService,
+    SecurityGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: ErrorHandler, useClass: ManejadorError }]
 })
 export class CoreModule { }

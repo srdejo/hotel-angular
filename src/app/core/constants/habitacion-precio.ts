@@ -1,7 +1,7 @@
-import { HabitacionPrecio } from "../modelo/habitacion-precio";
+
 
 export abstract class Precios {
-
+/*
     static readonly PRECIO101: HabitacionPrecio[] = [
         { habitacion: '101', cantidadPersonas: 3, precioPorPersona: true, aire: false, esAdicional: false, esNinio: false, precio: 30000 },
         { habitacion: '101', cantidadPersonas: 3, precioPorPersona: true, aire: true, esAdicional: false, esNinio: false, precio: 40000 },
@@ -168,5 +168,5 @@ export abstract class Precios {
         { habitacion: 'PH801', cantidadPersonas: 2, aire: false, yacuzzi: true, esAdicional: false, esNinio: false, precio: 200000 },
         { habitacion: 'PH801', cantidadPersonas: 1, aire: false, yacuzzi: true, horas: true, esAdicional: true, esNinio: false, precio: 30000 },
         { habitacion: 'PH801', cantidadPersonas: 1, aire: false, yacuzzi: true, esAdicional: true, esNinio: false, precio: 40000 },
-    ];
+    ];*/
 }

@@ -128,6 +128,6 @@ export class NavbarComponent implements OnInit {
 
     logout(): void{
         this.tokenService.logout();
-        this.router.navigate(['/'])
+        this.router.navigate(['/login'])
     }
 }

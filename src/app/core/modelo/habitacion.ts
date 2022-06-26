@@ -1,7 +1,7 @@
 import { HabitacionPrecio } from "./habitacion-precio";
 
 export interface Habitacion {
-    numero: String,
+    numero: string,
     capacidadMaxima: number,
     aire: boolean,
     balcon: boolean,

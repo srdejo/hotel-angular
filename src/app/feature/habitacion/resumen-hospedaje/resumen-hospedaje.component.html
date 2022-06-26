@@ -6,14 +6,14 @@
         {{hospedaje.toallas}} toallas, 
         {{hospedaje.colchonetas}} colchonetas adicionales</mat-card-subtitle>
     <mat-card-content>
-        <p>Valor día: <strong>{{valorDia() |currency:'COP':'symbol-narrow':'0.0-0'}}</strong>
+        <p>Valor día: <strong>{{precioDia | currency:'COP':'symbol-narrow':'0.0-0'}}</strong>
             <br>Días de hospedaje: <strong>{{hospedaje.dias}}</strong>
             , fecha de salida: <strong>{{hospedaje.fecha_salida}}</strong> <br>
             <small> Luego de xx horas se cobrara adicional</small></p>
-        <p class="text-align-right">Total: <strong>{{valorTotal() |currency:'COP':'symbol-narrow':'0.0-0'}}</strong></p>
+        <p class="text-align-right">Total: <strong></strong></p>
     </mat-card-content>
     <mat-card-actions class="clearfix">
         <button mat-stroked-button class="float-left"  routerLink="/dashboard">Cancelar</button>
-        <button mat-stroked-button class="float-right" color="primary">Confirmar</button>
+        <button mat-stroked-button class="float-right" [disabled]="precioDia == 0" color="primary">Confirmar</button>
     </mat-card-actions>
 </mat-card>
