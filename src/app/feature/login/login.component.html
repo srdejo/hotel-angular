@@ -8,23 +8,26 @@
                             <h4>Ingresar al sistema</h4>
                         </div>
                         <div class="card-body">
-                            <p>
-                                <mat-form-field class=" " appearance="fill">
-                                    <mat-label>Nombre de Usuario</mat-label>
-                                    <input matInput formControlName="nombreUsuario" type="text">
-                                </mat-form-field>
-                            </p>
-                            <p>
-                                <mat-form-field class=" " appearance="fill">
-                                    <mat-label>Contraseña</mat-label>
-                                    <input matInput formControlName="password" type="text">
-                                </mat-form-field>
-                            </p>
-                            <p class="text-right">
-                                <button mat-raised-button class="float-right" type="submit">Ingresar</button>
-                                <a mat-button href="https://www.google.com/" class="text-right"
-                                    target="_blank">Recuperar contraseña</a>
-                            </p>
+                            <form [formGroup]="formLogin" (ngSubmit)="onLogin()" >
+                                <p>
+                                    <mat-form-field class=" " appearance="fill">
+                                        <mat-label>Nombre de Usuario</mat-label>
+                                        <input matInput formControlName="nombreUsuario" type="text">
+                                    </mat-form-field>
+                                </p>
+                                <p>
+                                    <mat-form-field class=" " appearance="fill">
+                                        <mat-label>Contraseña</mat-label>
+                                        <input matInput formControlName="password" type="text">
+                                    </mat-form-field>
+                                </p>
+                                <p class="text-right">
+                                    <button mat-raised-button class="float-right" type="submit">Ingresar</button>
+                                    <a mat-button href="https://www.google.com/" class="text-right"
+                                        target="_blank">Recuperar contraseña</a>
+                                </p>
+
+                            </form>
                         </div>
                     </div>
                 </div>

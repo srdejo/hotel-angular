@@ -2,20 +2,29 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
+import { SecurityGuard } from './core/guard/security.guard';
+import { LoginGuard } from './core/guard/login.guard';
 
 const routes: Routes =[
   {
     path: '',
+    redirectTo: 'login'
+  },
+  {
+    path: 'login',
     loadChildren: () => import('./feature/login/login.module').then(mod => mod.LoginModule),
+    canActivate: [LoginGuard],
     pathMatch: 'full',
   },
   {
-    path: 'dashboard',
-    loadChildren: () => import('./feature/home/home.module').then(mod => mod.HomeModule)
+    path: 'home',
+    loadChildren: () => import('./feature/home/home.module').then(mod => mod.HomeModule), 
+    canActivate: [SecurityGuard], data: {expectedRol: ['admin', 'user']}
   },
   {
     path: 'habitacion',
-    loadChildren: () => import('./feature/habitacion/habitacion.module').then(mod => mod.HabitacionModule)
+    loadChildren: () => import('./feature/habitacion/habitacion.module').then(mod => mod.HabitacionModule),
+    canActivate: [SecurityGuard], data: {expectedRol: ['admin', 'user']}
   },
   {
     path: '**',

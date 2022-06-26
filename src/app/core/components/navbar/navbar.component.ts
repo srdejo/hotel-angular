@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Menu } from 'app/core/constants/menu-items';
+import { TokenService } from 'app/core/services/token.service';
 
 @Component({
     selector: 'app-navbar',
@@ -15,7 +16,8 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(location: Location, private element: ElementRef, private router: Router) {
+    constructor(location: Location, private element: ElementRef, private router: Router
+        , private tokenService:TokenService) {
         this.location = location;
         this.sidebarVisible = false;
     }
@@ -118,5 +120,14 @@ export class NavbarComponent implements OnInit {
             }
         }
         return 'Dashboard';
+    }
+
+    getUser(): string{
+        return this.tokenService.getNombreUsuario();
+    }
+
+    logout(): void{
+        this.tokenService.logout();
+        this.router.navigate(['/'])
     }
 }
