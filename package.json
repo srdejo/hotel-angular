@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json -o ",
     "build": "ng build --prod",
+    "build:win": "(if exist D:\\Daniel\\\"nestjs workspace\"\\hotel-api\\front rmdir D:\\Daniel\\\"nestjs workspace\"\\hotel-api\\front /s /q) && ng build --prod && move dist D:\\Daniel\\\"nestjs workspace\"\\hotel-api\\front",
     "test": "ng test --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
