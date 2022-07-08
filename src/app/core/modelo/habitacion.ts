@@ -1,3 +1,4 @@
+import { HabitacionEstado } from "./habitacion-estado.enum";
 import { HabitacionPrecio } from "./habitacion-precio";
 
 export interface Habitacion {
@@ -9,7 +10,7 @@ export interface Habitacion {
     cama140m?: number,
     cama160m?: number,
     cama180m?: number,
-    yacuzzi?:boolean,
-    ocupada?:boolean,
+    yacuzzi?: boolean,
+    estado?: HabitacionEstado,
     precios: HabitacionPrecio[]
 }

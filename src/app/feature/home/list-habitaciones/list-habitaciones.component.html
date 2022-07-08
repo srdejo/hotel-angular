@@ -7,12 +7,15 @@
                         <th>#</th>
                         <th class="text-center">Camas</th>
                         <th class="text-center">Aire</th>
-                        <th class="text-center width40porc">Precio</th>
+                        <th class="text-center">Saldo</th>
                         <th class="text-center" colspan="2">Acciones</th>
                     </thead>
                     <tbody>
                         <tr *ngFor="let habitacion of habitaciones">
-                            <td [ngClass]="!habitacion.ocupada? 'text-success' : 'text-danger'">{{
+                            <td [ngClass]="{'text-danger': habitacion.estado == 'ocupada',
+                            'text-basic': habitacion.estado  == 'desocupada',
+                            'text-info': habitacion.estado  == 'aseo'}">
+                                {{
                                 habitacion.numero
                                 }}</td>
                             <td>
@@ -24,38 +27,21 @@
                                     1.60 mt</span>
                             </td>
                             <td class="text-center"><i *ngIf="habitacion.aire"
-                                    class="material-icons aire">check_circle</i></td>
+                                    class="material-icons aire">check_circle</i>
+                            </td>
                             <td>
-                                <mat-expansion-panel class="explicacion-precios">
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            Explicación de precios
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-
-                                    <ul>
-                                        <li *ngFor="let precio of habitacion.precios">
-                                            {{precio.cantidadPersonas}}
-                                            <span *ngIf="precio.precioPorPersona"> o más </span>
-                                            persona<span *ngIf="precio.cantidadPersonas>1">s</span>
-                                            <span *ngIf="precio.esAdicional"> adicional </span>
-                                            {{precio.precio|currency:'COP':'symbol-narrow':'0.0-0'}}
-                                            <span *ngIf="precio.precioPorPersona"> por persona </span>
-                                            <span *ngIf="precio.aire; else elseBlock">con aire</span>
-                                            <ng-template #elseBlock>sin aire</ng-template>
-                                        </li>
-                                    </ul>
-                                </mat-expansion-panel>
-
+                                Saldo adeudado
                             </td>
                             <td class="text-center">
-                                <button mat-button [matTooltip]="'Ver habitación ' + habitacion.numero"
-                                    matTooltipPosition="before">
-                                    <i class="material-icons">preview</i>
+                                <button mat-button *ngIf="habitacion.estado  == 'aseo'" matTooltipPosition="after"
+                                    [matTooltip]="'Marcar habitación como aseada'">
+                                    <span class="material-icons">
+                                        cleaning_services
+                                    </span>
                                 </button>
                             </td>
                             <td class="text-center">
-                                <button mat-button *ngIf="!habitacion.ocupada; else salirBlock"
+                                <button mat-button *ngIf="habitacion.estado  != 'ocupada'; else salirBlock"
                                     matTooltipPosition="after"
                                     [matTooltip]="'Ingresar huesped a la habitación ' + habitacion.numero"
                                     [routerLink]="'/habitacion/ingresar-huesped/'+habitacion.numero">

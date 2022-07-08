@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Habitaciones } from 'app/core/constants/habitaciones';
 import { Habitacion } from 'app/core/modelo/habitacion';
+import { ListHabitacionesService } from '../shared/list-habitaciones.service';
 
 @Component({
   selector: 'app-list-habitaciones',
@@ -10,24 +10,32 @@ import { Habitacion } from 'app/core/modelo/habitacion';
 })
 export class ListHabitacionesComponent implements OnInit {
 
-  habitaciones: Habitacion[] = Habitaciones.ITEMS;
+  habitaciones: Habitacion[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private listHabitacionesService: ListHabitacionesService
+  ) { }
 
   ngOnInit(): void {
-
+    this.listHabitacionesService.listarHabitaciones().subscribe(
+      {
+        next: (data) => {
+          console.log(data);
+          
+          this.habitaciones = data
+        },
+        error: (err) => {
+          console.error(err.error.message, 'Fail')
+        }
+      })
+  }
+  usar(habitacion: Habitacion) {
+    this.router.navigateByUrl('/habitacion/ingresar-habitacion/' + habitacion.numero);
   }
 
-  
-  
-
-  usar(habitacion: Habitacion){
-    this.router.navigateByUrl('/habitacion/ingresar-habitacion/'+habitacion.numero);
-  }
-
-  entregar(habitacion: Habitacion){
+  entregar(habitacion: Habitacion) {
     console.log(habitacion);
-    
+
   }
 
 }
