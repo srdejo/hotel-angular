@@ -1,19 +1,20 @@
 <br>
 <mat-card class="example-card" *ngIf="hospedaje">
     <mat-card-title>Resumen de hospedaje</mat-card-title>
-    <mat-card-subtitle >{{hospedaje.adultos}} adultos y 
+    <mat-card-subtitle>{{hospedaje.adultos}} adultos y
         {{hospedaje.ninios}} niños,
-        {{hospedaje.toallas}} toallas, 
+        {{hospedaje.toallas}} toallas,
         {{hospedaje.colchonetas}} colchonetas adicionales</mat-card-subtitle>
     <mat-card-content>
         <p>Valor día: <strong>{{precioDia | currency:'COP':'symbol-narrow':'0.0-0'}}</strong>
             <br>Días de hospedaje: <strong>{{hospedaje.dias}}</strong>
             , fecha de salida: <strong>{{hospedaje.fecha_salida}}</strong> <br>
-            <small> Luego de xx horas se cobrara adicional</small></p>
-        <p class="text-align-right">Total: <strong></strong></p>
+            <!--<small> Luego de xx horas se cobrara adicional</small>-->
+        </p>
+        <p class="text-align-right">Total: <strong>{{valorTotal()}}</strong></p>
     </mat-card-content>
     <mat-card-actions class="clearfix">
-        <button mat-stroked-button class="float-left"  routerLink="/dashboard">Cancelar</button>
-        <button mat-stroked-button class="float-right" [disabled]="precioDia == 0" color="primary">Confirmar</button>
+        <button mat-stroked-button class="float-left" routerLink="/home" >Cancelar</button>
+        <button mat-stroked-button class="float-right" [disabled]="precioDia == 0" color="primary" (click)="confirmar()">Confirmar</button>
     </mat-card-actions>
 </mat-card>

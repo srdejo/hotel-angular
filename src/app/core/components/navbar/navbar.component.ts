@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Menu } from 'app/core/constants/menu-items';
 import { TokenService } from 'app/core/services/token.service';
+import { TurnoService } from 'app/feature/home/shared/turno.service';
 
 @Component({
     selector: 'app-navbar',
@@ -17,7 +18,7 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
 
     constructor(location: Location, private element: ElementRef, private router: Router
-        , private tokenService:TokenService) {
+        , private tokenService:TokenService, private turnoService: TurnoService) {
         this.location = location;
         this.sidebarVisible = false;
     }
@@ -129,5 +130,14 @@ export class NavbarComponent implements OnInit {
     logout(): void{
         this.tokenService.logout();
         this.router.navigate(['/login'])
+    }
+
+    async cerrarTurno(): Promise<void>{
+        await this.turnoService.cerrar(0).subscribe({
+            next(value) {
+                console.log(value);                
+            },
+        })
+        this.router.navigate(['/home'])
     }
 }

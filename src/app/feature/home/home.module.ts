@@ -5,24 +5,24 @@ import { HomeRoutingModule } from './home-routing.module';
 import { CoreModule } from 'app/core/core.module';
 import { InicioComponent } from './inicio/inicio.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { ListHabitacionesComponent } from './list-habitaciones/list-habitaciones.component';
+import { TurnoComponent } from './turno/turno.component';
+import { TurnoService } from './shared/turno.service';
+import { SharedModule } from 'app/shared/shared.module';
 
 @NgModule({
   declarations: [
     InicioComponent,
     DashboardComponent,
-    ListHabitacionesComponent
+    ListHabitacionesComponent,
+    TurnoComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     CoreModule,
-    MatExpansionModule,
-    MatButtonModule,
-    MatTooltipModule
-  ]
+    SharedModule
+  ],
+  providers: [TurnoService]
 })
 export class HomeModule { }

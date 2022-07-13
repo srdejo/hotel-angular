@@ -19,6 +19,8 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError(error => {
         switch (error.status) {
           case UNAUTHORIZED:
+            console.log('debe ir a login porque se vencio el token');
+            
             this.router.navigate(['/login']);
             break;
           case FORBIDDEN:

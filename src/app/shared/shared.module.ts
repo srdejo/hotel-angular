@@ -7,6 +7,8 @@ import { MensajeErrorCamposContenedorDirective } from './directivas/error-campos
 import { ErrorCamposPlantillaComponent } from './directivas/error-campos/componente/error-campos-plantilla.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TrackByPipe } from './pipe/track-by.pipe';
+import { MaterialDesignModule } from './material-design/material-design.module';
+import { InputMaskModule } from '@ngneat/input-mask';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { TrackByPipe } from './pipe/track-by.pipe';
     MensajeErrorCamposSubmitDirective,
     TrackByPipe
   ],
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, MaterialDesignModule, 
+    InputMaskModule.forRoot({ inputSelector: 'input', isAsync: true })],
   exports: [
     CommonModule,
     HttpClientModule,
@@ -25,7 +28,9 @@ import { TrackByPipe } from './pipe/track-by.pipe';
     MensajeErrorCamposSubmitDirective,
     ReactiveFormsModule,
     FormsModule,
-    TrackByPipe
+    TrackByPipe,
+    MaterialDesignModule,
+    InputMaskModule
   ]
 })
 export class SharedModule { }

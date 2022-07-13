@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Habitaciones } from 'app/core/constants/habitaciones';
 import { Habitacion } from 'app/core/modelo/habitacion';
+import { Hospedaje } from 'app/core/modelo/hospedaje';
 
 @Component({
   selector: 'app-form-habitacion',
@@ -10,18 +10,17 @@ import { Habitacion } from 'app/core/modelo/habitacion';
 })
 export class FormHabitacionComponent implements OnInit {
 
-  @Input() numeroHabitacion: string = '';
+  @Input() habitacion: Habitacion = {} as Habitacion;
 
-  @Output() habitacion = new EventEmitter<Habitacion>();
-
-  habitacionSeleccionada: Habitacion = null;
-  habilitarAire: boolean = true;
+  @Output() hospedaje = new EventEmitter<Hospedaje>();
 
   habitacionForm = new FormGroup({
+    carros: new FormControl(0),
+    motos: new FormControl(0),
     adultos: new FormControl(0),
     ninios: new FormControl(0),
-    dias: new FormControl(0),
-    aire: new FormControl(this.habilitarAire),
+    dias: new FormControl(1),
+    aire: new FormControl(),
     horas: new FormControl(),
     colchonetas: new FormControl(0),
     toallas: new FormControl(0),
@@ -32,7 +31,6 @@ export class FormHabitacionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.validarAire();
     this.cambiosForm();
   }
 
@@ -42,14 +40,7 @@ export class FormHabitacionComponent implements OnInit {
 
   cambiosForm() {
     this.habitacionForm.valueChanges.subscribe(() => {
-      this.habitacion.emit(this.habitacionForm.value);
+      this.hospedaje.emit(this.habitacionForm.value);
     })
-  }
-
-  validarAire(){
-    this.habitacionSeleccionada = 
-    Habitaciones.ITEMS.find(habitacion => habitacion.numero == this.numeroHabitacion);
-    this.habilitarAire = this.habitacionSeleccionada.aire;
-    
   }
 }

@@ -13,5 +13,7 @@ export interface Hospedaje {
     aire: boolean,
     colchonetas: number,
     toallas: number,
-    cobijas: number
+    cobijas: number,
+    carros: number,
+    motos: number
 }

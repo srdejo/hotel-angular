@@ -6,8 +6,6 @@ import { TokenService } from 'app/core/services/token.service';
 import { LoginDto } from './dto/login.dto';
 import { LoginService } from './login.service';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,7 +23,7 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private tokenService: TokenService,
     private router: Router,
-    private snakbarService: SnackbardService
+    private snakbarService: SnackbardService,
   ) { }
 
   ngOnInit(): void {
@@ -39,8 +37,8 @@ export class LoginComponent implements OnInit {
     return this.formLogin.get('password').value;
   }
 
-  onLogin(): void {
-    this.loginService.login(new LoginDto(this.nombreUsuario, this.password))
+  async onLogin(): Promise<void> {
+    await this.loginService.login(new LoginDto(this.nombreUsuario, this.password))
       .subscribe({
         next: (data) => {
           if (!data.token) {

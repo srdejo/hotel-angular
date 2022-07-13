@@ -64,4 +64,9 @@ export class ResumenHospedajeComponent implements OnInit {
   get hospedaje(){
     return this._hospedaje;
   }
+
+  confirmar(){
+    console.log(this._hospedaje);
+    
+  }
 }

@@ -4,5 +4,6 @@ export interface HabitacionPrecio {
     adultos: number;
     ninios: number;
     valor?: number;
-
+    motos?: number;
+    carros?: number;
 }

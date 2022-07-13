@@ -3,9 +3,8 @@ import { HabitacionPrecio } from "./habitacion-precio";
 
 export interface Habitacion {
     numero: string,
-    capacidadMaxima: number,
     aire: boolean,
-    balcon: boolean,
+    porHoras: boolean,
     cama1m?: number,
     cama140m?: number,
     cama160m?: number,

@@ -7,6 +7,7 @@
                         <th>#</th>
                         <th class="text-center">Camas</th>
                         <th class="text-center">Aire</th>
+                        <th class="text-center">Por Horas</th>
                         <th class="text-center">Saldo</th>
                         <th class="text-center" colspan="2">Acciones</th>
                     </thead>
@@ -27,6 +28,9 @@
                                     1.60 mt</span>
                             </td>
                             <td class="text-center"><i *ngIf="habitacion.aire"
+                                    class="material-icons aire">check_circle</i>
+                            </td>
+                            <td class="text-center"><i *ngIf="habitacion.porHoras"
                                     class="material-icons aire">check_circle</i>
                             </td>
                             <td>

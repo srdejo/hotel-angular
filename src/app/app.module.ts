@@ -17,7 +17,7 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     SharedModule,
     RouterModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,

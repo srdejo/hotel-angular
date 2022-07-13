@@ -2,7 +2,7 @@ import { MenuItem } from "../modelo/menu-item";
 
 export abstract class Menu{
     static readonly ITEMS: MenuItem[] = [
-        { path: '/dashboard', title: 'Inicio',  icon: 'dashboard', class: '' },
+        { path: '/home', title: 'Inicio',  icon: 'dashboard', class: '' },
         /*
         { path: 'habitacion', title: 'Habitaciones',  icon:'king_bed', class: '' },
         { path: 'huesped', title: 'Huesped',  icon:'person', class: '' },

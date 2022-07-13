@@ -13,15 +13,17 @@ export class ListHabitacionesComponent implements OnInit {
   habitaciones: Habitacion[] = [];
 
   constructor(private router: Router,
-    private listHabitacionesService: ListHabitacionesService
+    private listHabitacionesService: ListHabitacionesService,
   ) { }
 
   ngOnInit(): void {
+    this.listarHabitaciones()
+  }
+
+  listarHabitaciones() {
     this.listHabitacionesService.listarHabitaciones().subscribe(
       {
         next: (data) => {
-          console.log(data);
-          
           this.habitaciones = data
         },
         error: (err) => {
@@ -29,6 +31,7 @@ export class ListHabitacionesComponent implements OnInit {
         }
       })
   }
+
   usar(habitacion: Habitacion) {
     this.router.navigateByUrl('/habitacion/ingresar-habitacion/' + habitacion.numero);
   }
