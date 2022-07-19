@@ -8,13 +8,17 @@ import { FormHabitacionComponent } from './form-habitacion/form-habitacion.compo
 import { ResumenHospedajeComponent } from './resumen-hospedaje/resumen-hospedaje.component';
 
 import { SharedModule } from 'app/shared/shared.module';
+import { DetalleHabitacionComponent } from './detalle-habitacion/detalle-habitacion.component';
+import { EntregarHabitacionComponent } from './entregar-habitacion/entregar-habitacion.component';
 
 @NgModule({
   declarations: [
     IngresarHuespedComponent,
     FormHuespedComponent,
     FormHabitacionComponent,
-    ResumenHospedajeComponent
+    ResumenHospedajeComponent,
+    DetalleHabitacionComponent,
+    EntregarHabitacionComponent
   ],
   imports: [
     CommonModule,

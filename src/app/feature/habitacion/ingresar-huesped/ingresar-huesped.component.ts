@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Habitacion } from 'app/core/modelo/habitacion';
 import { HabitacionPrecio } from 'app/core/modelo/habitacion-precio';
 import { Hospedaje } from 'app/core/modelo/hospedaje';
@@ -10,13 +10,15 @@ import { HabitacionService } from '../shared/habitacion.service';
 import { FormControl } from '@angular/forms';
 import { CurrencyMask } from 'app/core/constants/currency-mask';
 
+import { SnackbardService } from 'app/core/services/snackbard.service';
+import { HospedajeService } from '../shared/hospedaje.service';
+
 @Component({
   selector: 'app-ingresar-huesped',
   templateUrl: './ingresar-huesped.component.html',
   styleUrls: ['./ingresar-huesped.component.scss']
 })
 export class IngresarHuespedComponent implements OnInit {
-
 
   currencyInputMask: CurrencyMask = CurrencyMask.currencyInputMask;
   hospedaje: Hospedaje = {} as Hospedaje;
@@ -28,8 +30,12 @@ export class IngresarHuespedComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
+    private router: Router,
     private habitacionService: HabitacionService,
-    private habitacionPrecioService: HabitacionPrecioService) {
+    private habitacionPrecioService: HabitacionPrecioService,
+    private hospedajeService: HospedajeService,
+    private snackbardService: SnackbardService) {
+
   }
 
   ngOnInit(): void {
@@ -40,8 +46,6 @@ export class IngresarHuespedComponent implements OnInit {
 
   async cargarHabitacion(numero: string): Promise<void> {
     this.habitacion = await firstValueFrom(this.habitacionService.consultarHabitacion(numero))
-    console.log(this.habitacion);
-    
   }
 
   cargarHuesped(huesped: Huesped[]) {
@@ -49,8 +53,6 @@ export class IngresarHuespedComponent implements OnInit {
   }
 
   cargarHospedaje(_hospedaje: Hospedaje) {
-    console.log(_hospedaje);
-    
     this.hospedaje = _hospedaje;
     this.consultarValor();
   }
@@ -78,24 +80,39 @@ export class IngresarHuespedComponent implements OnInit {
       })
   }
 
-  totalDinamico(){
-    if(this.valorTotal == this.precioDia){
+  totalDinamico() {
+    if (this.valorTotal == this.precioDia) {
       return this.valorTotal
-    }else{
+    } else {
       return this.precioDia * this.hospedaje.dias
     }
   }
 
   cambiarCalculado(nuevoPrecio) {
-    console.log('nuevoPrecio', nuevoPrecio);
     let precio = nuevoPrecio.replace('$', '').replace('.', '');
-    this.valorTotal = precio * this.hospedaje.dias  
-    console.log('valorTotal', this.valorTotal);  
+    this.valorTotal = precio * this.hospedaje.dias
     this.totalDinamico()
   }
 
   confirmar() {
-    console.log(this.hospedaje);
+    if (this.hospedaje.huesped == undefined) {
 
+      this.snackbardService.openSnackBar('Debes ingresar al menos un huesped')
+      return
+    }
+    if (this.hospedaje.porHoras == null) { this.hospedaje.porHoras = false; }
+
+    this.hospedajeService.tomarHabitacion(this.hospedaje).subscribe({
+      next: (data) => {
+        console.log('respuesta', data);
+        this.snackbardService.openSnackBar(data.message)
+        this.router.navigate(['/habitacion/detalle-habitacion/'+this.numeroHabitacion]);
+      },
+      error: (err) => {
+        console.error('Error ', err)
+        this.snackbardService.openSnackBar(err.message)
+      }
+    })
   }
+
 }

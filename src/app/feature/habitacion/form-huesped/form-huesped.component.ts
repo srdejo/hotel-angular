@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators, FormGroupDirective, NgForm } from '
 import { MatTable } from '@angular/material/table';
 import { ErrorStateMatcher } from '@angular/material/core';
 
-
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -40,6 +39,7 @@ export class FormHuespedComponent implements OnInit {
   dataSource: Huesped[] = [];
   displayedColumns: string[] = ['documento', 'nombre', 'quitar'];
 
+
   constructor() { }
 
   ngOnInit(): void { }
@@ -69,7 +69,7 @@ export class FormHuespedComponent implements OnInit {
     this.table.renderRows();
   }
 
-  leerHuspedes(){
+  leerHuspedes() {
     return this.dataSource;
   }
 }
