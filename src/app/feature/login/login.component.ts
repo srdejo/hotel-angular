@@ -43,9 +43,14 @@ export class LoginComponent implements OnInit {
         next: (data) => {
           if (!data.token) {
             this.snakbarService.openSnackBar('Usuario o Contraseña incorrecta')
-          } else {
+          } else{
             this.tokenService.setToken(data.token);
-            this.router.navigate(['/home']);
+            if (data.iniciarTurno) {
+              this.router.navigate(['/turno/iniciar-turno']);
+            } else {
+              this.router.navigate(['/home']);
+            }
+            
           }
         },
         error: (err) => {

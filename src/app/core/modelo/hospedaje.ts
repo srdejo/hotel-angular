@@ -9,7 +9,7 @@ export interface Hospedaje {
     fecha_ingreso: string,
     dias: number,
     fecha_salida?: string,
-    horas: boolean,
+    porHoras: boolean,
     aire: boolean,
     colchonetas: number,
     toallas: number,

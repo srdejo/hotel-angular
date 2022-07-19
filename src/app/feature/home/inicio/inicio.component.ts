@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TurnoService } from '../shared/turno.service';
 
 @Component({
   selector: 'app-inicio',
@@ -8,32 +7,11 @@ import { TurnoService } from '../shared/turno.service';
 })
 export class InicioComponent implements OnInit {
 
-
-  turno: boolean;
-  constructor(private turnoService: TurnoService) { }
+  constructor() { }
 
   ngOnInit() {
     
-    this.validarTurno()
   }
 
-  validarTurno(): void {
-    this.turnoService.consultar().subscribe(
-      {
-        next(value) {
-          
-          _isTurnoActiveSubject.next(false)
-          console.log('this.turno', this.turno);
-        },
-        error(err) {
-          _isTurnoActiveSubject.next(true)
-          console.log('this.turno', this.turno);
-      
-        },
-      }
-    )
-    
-    console.log('this.turno', this.turno);
-  }
 
 }

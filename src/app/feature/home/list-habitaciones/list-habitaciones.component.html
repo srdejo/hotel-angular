@@ -18,7 +18,8 @@
                             'text-info': habitacion.estado  == 'aseo'}">
                                 {{
                                 habitacion.numero
-                                }}</td>
+                                }}
+                            </td>
                             <td>
                                 <span *ngIf="habitacion.cama1m"><strong>{{habitacion.cama1m}}</strong> de 1mt
                                     <br></span>
@@ -52,7 +53,11 @@
                                     <i class="material-icons">input</i>
                                 </button>
                                 <ng-template #salirBlock>
-                                    <button mat-button (click)="entregar(habitacion)" matTooltipPosition="after"
+                                    <button mat-button [routerLink]="'/habitacion/detalle-habitacion/'+habitacion.numero" matTooltipPosition="after"
+                                        [matTooltip]="'Ver la habitación ' + habitacion.numero">
+                                        <i class="material-icons">info_outlined</i>
+                                    </button>
+                                    <button mat-button [routerLink]="'/habitacion/entregar-habitacion/'+habitacion.numero" matTooltipPosition="after"
                                         [matTooltip]="'Entregar la habitación ' + habitacion.numero">
                                         <i class="material-icons">logout</i>
                                     </button>

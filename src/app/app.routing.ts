@@ -27,6 +27,11 @@ const routes: Routes =[
     canActivate: [SecurityGuard], data: {expectedRol: ['admin', 'user']}
   },
   {
+    path: 'turno',
+    loadChildren: () => import('./feature/turno/turno.module').then(mod => mod.TurnoModule),
+    canActivate: [SecurityGuard], data: {expectedRol: ['admin', 'user']}
+  },
+  {
     path: '**',
     redirectTo: ''
   }  
