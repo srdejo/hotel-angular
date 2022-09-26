@@ -8,39 +8,40 @@
             <div class="col-lg-5">
                 <br>
                 <mat-card class="example-card" *ngIf="hospedaje">
-                    <mat-card-title>Resumen de hospedaje</mat-card-title>
-                    <mat-card-subtitle>{{hospedaje.adultos}} adultos y
-                        {{hospedaje.ninios}} niños,
-                        {{hospedaje.toallas}} toallas,
-                        {{hospedaje.colchonetas}} colchonetas adicionales</mat-card-subtitle>
                     <mat-card-content>
                         <table class="mat-table" style="width: 100%;">
                             <tr class="mat-row">
-                                <td class="mat-cell">Días</td>
-                                <td class="mat-cell">{{hospedaje.dias}}</td>
-                            </tr>
-                            <tr class="mat-row">
                                 <td class="mat-cell">Valor día sistema</td>
-                                <td class="mat-cell">{{precioDia | currency:'COP':'symbol-narrow':'0.0-0'}}</td>
+                                <td class="mat-cell text-right">{{precioDia | currency:'COP':'symbol-narrow':'0.0-0'}}</td>
                             </tr>
                             <tr class="mat-row">
-                                <td class="mat-cell">Nuevo valor dia</td>
+                                <td class="mat-cell">Valor con descuento</td>
                                 <td class="mat-cell">
-                                    <mat-form-field class="example-form-field" appearance="fill">
-                                        <input matInput [ngModel]="precioDia" type="text"
+                                        <input matInput [ngModel]="precioDia" type="text" 
                                             [inputMask]="currencyInputMask" (ngModelChange)="cambiarCalculado($event)">
-                                    </mat-form-field>
+                                    
                                 </td>
                             </tr>
-                            <tr class="mat-footer-row">
+                            <tr class="mat-row">
                                 <td class="mat-cell">Total</td>
-                                <td class="mat-cell">{{ this.valorTotal | currency:'COP':'symbol-narrow':'0.0-0'}}</td>
+                                <td class="mat-cell text-right">{{ this.valorTotal | currency:'COP':'symbol-narrow':'0.0-0'}}</td>
+                            </tr>
+                            <tr class="mat-footer-row">
+                                <td class="mat-cell" colspan="2">
+                                    <mat-form-field appearance="standard" >
+                                    <mat-label>Seleccione el medio de pago</mat-label>
+                                    <mat-select [(value)]="medio_pago">
+                                      <mat-option *ngFor="let cuenta of cuentas" value="cuenta.id">{{cuenta.nombre}}</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                                </td>
                             </tr>
                         </table>
                     </mat-card-content>
                     <mat-card-actions class="clearfix">
                         <button mat-stroked-button class="float-left" routerLink="/home">Volver</button>
-                        <button mat-stroked-button class="float-right" [disabled]="precioDia == 0" color="primary"
+                        
+                        <button mat-stroked-button class="float-right" [disabled]="precioDia == 0  || !medio_pago" color="primary"
                             (click)="confirmar()">Confirmar</button>
                     </mat-card-actions>
                 </mat-card>

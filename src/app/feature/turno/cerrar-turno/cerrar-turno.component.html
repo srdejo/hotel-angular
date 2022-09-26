@@ -1,16 +1,24 @@
 <div class="main-content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6">
                 <mat-card class="iniciar-turno">
                     <mat-card-title>Cerrar Turno</mat-card-title>
-                    <mat-card-subtitle>Reporte de movimientos
+                    <mat-card-subtitle>Registre el valor en efectivo que tiene a su disposición
                     </mat-card-subtitle>
                     <mat-card-content>
-                        Saldo final: $0
+                        <mat-form-field class="example-form-field" appearance="fill">
+                            <input matInput [formControl]="saldoFinal" type="text" [inputMask]="currencyInputMask">
+                        </mat-form-field>
+                        <div >
+                            <p>Saldo inicial: {{saldo_inicial}}</p>
+                            <p>Saldo final esperado: {{saldo_final}}</p>
+                            <p>Diferencia en saldo ingresado y registrado por el sistema: <strong color="warn">{{diferencia_saldo}}</strong></p>
+                        </div>
                     </mat-card-content>
                     <mat-card-actions align="end">
-                        <button mat-button (click)="cerrarTurno()">Iniciar</button>
+                        <button mat-button (click)="salir()" color="accent">Salir del sistema</button>
+                        <button mat-button (click)="cerrarTurno()" color="primary">Cerrar Turno</button>
                     </mat-card-actions>
                 </mat-card>
             </div>

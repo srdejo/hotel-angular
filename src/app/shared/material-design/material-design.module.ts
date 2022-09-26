@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [],
@@ -31,6 +32,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatRippleModule,
     MatTableModule,
     MatIconModule,
+    MatListModule
   ],
   exports: [
     MatExpansionModule,
@@ -46,6 +48,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatRippleModule,
     MatTableModule,
     MatIconModule,
+    MatListModule
   ]
 })
 export class MaterialDesignModule { }

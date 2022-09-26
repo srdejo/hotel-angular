@@ -12,6 +12,7 @@ import { CurrencyMask } from 'app/core/constants/currency-mask';
 
 import { SnackbardService } from 'app/core/services/snackbard.service';
 import { HospedajeService } from '../shared/hospedaje.service';
+import { CuentaService } from '../shared/cuenta.service';
 
 @Component({
   selector: 'app-ingresar-huesped',
@@ -27,25 +28,38 @@ export class IngresarHuespedComponent implements OnInit {
   habitacion: Habitacion;
   total = new FormControl(0);
   valorTotal: number;
-
+  medio_pago;
+  cuentas;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private habitacionService: HabitacionService,
     private habitacionPrecioService: HabitacionPrecioService,
     private hospedajeService: HospedajeService,
+    private cuentaService: CuentaService,
     private snackbardService: SnackbardService) {
 
   }
 
-  ngOnInit(): void {
-    const numero = this.route.snapshot.paramMap.get('habitacion');
-    this.cargarHabitacion(numero);
-
+  async ngOnInit(): Promise<void> {
+    this.cargarHabitacion(await this.route.snapshot.paramMap.get('habitacion'));
+    this.cargarCuentas();
   }
 
   async cargarHabitacion(numero: string): Promise<void> {
     this.habitacion = await firstValueFrom(this.habitacionService.consultarHabitacion(numero))
+  }
+
+  async cargarCuentas() {
+    await this.cuentaService.consultarCuentas()
+      .subscribe({
+        next: (data) => {
+          this.cuentas = data
+        },
+        error: (err) => {
+          console.error(err, 'Fail')
+        }
+      })
   }
 
   cargarHuesped(huesped: Huesped[]) {
@@ -74,7 +88,7 @@ export class IngresarHuespedComponent implements OnInit {
           this.valorTotal = data.valor * this.hospedaje.dias
         },
         error: (err) => {
-          console.error(err.error.message, 'Fail')
+          console.error(err, 'Fail')
           this.precioDia = 0;
         }
       })
@@ -106,7 +120,7 @@ export class IngresarHuespedComponent implements OnInit {
       next: (data) => {
         console.log('respuesta', data);
         this.snackbardService.openSnackBar(data.message)
-        this.router.navigate(['/habitacion/detalle-habitacion/'+this.numeroHabitacion]);
+        this.router.navigate(['/habitacion/detalle-habitacion/' + this.numeroHabitacion]);
       },
       error: (err) => {
         console.error('Error ', err)

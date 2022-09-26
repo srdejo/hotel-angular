@@ -1,1 +1,98 @@
-<p>detalle-habitacion works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-md-12 justify-content-md-center">
+                <mat-card style="width: 80%; margin: 10px auto;">
+                    <mat-card-title>Huesped <strong>Nombre del huesped</strong></mat-card-title>
+                    <mat-card-subtitle>Habitacion <strong>101</strong></mat-card-subtitle>
+                    <mat-card-content>
+                        <div class="row ">
+                            <div class="col-md-4 justify-content-md-center">
+                                <h4>Adicionales</h4>
+                                <mat-form-field class="example-form-field" appearance="fill">
+                                    <mat-label>Elemento adicional</mat-label>
+                                    <input matInput type="text" [(ngModel)]="value">
+                                    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="add()">
+                                        <mat-icon>add</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                                <mat-list role="list">
+                                    <mat-list-item role="listitem">2 Toallas</mat-list-item>
+                                    <mat-list-item role="listitem">3 lo que sea</mat-list-item>
+                                </mat-list>
+                            </div>
+                            <div class="col-md-8 justify-content-md-center">
+                                <table class="table table-hover">
+                                    <thead class="text-lime">
+                                        <th class="text-center">Producto</th>
+                                        <th class="text-center">Cantidad</th>
+                                        <th class="text-center">Valor</th>
+                                        <th class="text-center"></th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Favorite food</mat-label>
+                                                    <mat-select>
+                                                        <mat-option *ngFor="let food of foods" [value]="food.value">
+                                                            {{food.viewValue}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </td>
+                                            <td>
+                                                <mat-form-field style="width: 60px; margin: 0 auto" appearance="fill">
+                                                    <input matInput placeholder="" value="" type="number">
+                                                  </mat-form-field>
+                                            </td>
+                                            <td>
+                                                <mat-form-field style="width: 120px; margin: 0 auto" appearance="fill">
+                                                    <input matInput placeholder="" value="" type="number">
+                                                  </mat-form-field>
+                                            </td>
+                                            <td>
+                                                <button mat-mini-fab color="" aria-label="Agregar" (click)="add()">
+                                                    <mat-icon>add</mat-icon>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gaseosa</td>
+                                            <td class="text-center">3</td>
+                                            <td class="text-center">{{3000 | currency:'COP':'symbol-narrow':'0.0-0'}}
+                                            </td>
+                                            <td class="text-center"><button mat-flat-button><span
+                                                        class="material-icons">attach_money</span></button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dias Hospedaje</td>
+                                            <td class="text-center">3</td>
+                                            <td class="text-center">{{100000 | currency:'COP':'symbol-narrow':'0.0-0'}}
+                                            </td>
+                                            <td class="text-center"><button mat-flat-button><span
+                                                        class="material-icons">attach_money</span></button></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="2">Total</td>
+                                            <td class="text-center">{{3000 | currency:'COP':'symbol-narrow':'0.0-0'}}
+                                            </td>
+                                            <td class="text-center"><button mat-flat-button><span
+                                                        class="material-icons">attach_money</span></button></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions align="end">
+                        <button mat-stroked-button color="primary"
+                            [routerLink]="'/habitacion/entregar-habitacion/101'">Registrar salida</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
